@@ -1,5 +1,8 @@
 package com.zipcodewilmington;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -88,7 +91,14 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-
+        HashSet<Character> set = new HashSet<>();
+        for (String s : array) {
+            String lowerCaseStr = s.toLowerCase();
+            for (int i = 0; i < lowerCaseStr.length(); i++) {
+                set.add(lowerCaseStr.charAt(i));
+                if (set.size() == 26) return true;
+            }
+        }
         return false;
     }
 
