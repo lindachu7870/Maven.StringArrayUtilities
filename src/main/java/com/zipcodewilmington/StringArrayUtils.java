@@ -75,8 +75,12 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-
-        return false;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != array[array.length-1-i]) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -84,6 +88,7 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
+
         return false;
     }
 
