@@ -10,7 +10,7 @@ public class StringArrayUtils {
     /**
      * @param array array of String objects
      * @return first element of specified array
-     */ // TODO
+     */
     public static String getFirstElement(String[] array) {
         return array[0];
     }
@@ -36,7 +36,7 @@ public class StringArrayUtils {
     /**
      * @param array array of String objects
      * @return last element in specified array
-     */ // TODO
+     */
     public static String getLastElement(String[] array) {
         return array[array.length - 1];
     }
@@ -44,7 +44,7 @@ public class StringArrayUtils {
     /**
      * @param array array of String objects
      * @return second to last element in specified array
-     */ // TODO
+     */
     public static String getSecondToLastElement(String[] array) {
         return array[array.length - 2];
     }
@@ -53,7 +53,7 @@ public class StringArrayUtils {
      * @param array array of String objects
      * @param value value to check array for
      * @return true if the array contains the specified `value`
-     */ // TODO
+     */
     public static boolean contains(String[] array, String value) {
         for(String s : array) {
             if(s.equals(value)) {
@@ -66,7 +66,7 @@ public class StringArrayUtils {
     /**
      * @param array of String objects
      * @return an array with identical contents in reverse order
-     */ // TODO
+     */
     public static String[] reverse(String[] array) {
         String[] strArr = new String[array.length];
         int strArrIdx = 0;
@@ -80,7 +80,7 @@ public class StringArrayUtils {
     /**
      * @param array array of String objects
      * @return true if the order of the array is the same backwards and forwards
-     */ // TODO
+     */
     public static boolean isPalindromic(String[] array) {
         for (int i = 0; i < array.length; i++) {
             if (array[i] != array[array.length-1-i]) {
@@ -93,7 +93,7 @@ public class StringArrayUtils {
     /**
      * @param array array of String objects
      * @return true if each letter in the alphabet has been used in the array
-     */ // TODO
+     */
     public static boolean isPangramic(String[] array) {
         HashSet<Character> set = new HashSet<>();
         for (String s : array) {
@@ -113,7 +113,7 @@ public class StringArrayUtils {
      * @param array array of String objects
      * @param value value to check array for
      * @return number of occurrences the specified `value` has occurred
-     */ // TODO
+     */
     public static int getNumberOfOccurrences(String[] array, String value) {
         int count = 0;
         for (int i = 0; i < array.length; i++) {
@@ -128,7 +128,7 @@ public class StringArrayUtils {
      * @param array         array of String objects
      * @param valueToRemove value to remove from array
      * @return array with identical contents excluding values of `value`
-     */ // TODO
+     */
     public static String[] removeValue(String[] array, String valueToRemove) {
         if (array == null) {
             return null;
@@ -162,18 +162,68 @@ public class StringArrayUtils {
     /**
      * @param array array of chars
      * @return array of Strings with consecutive duplicates removes
-     */ // TODO
+     */
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+        String[] result;
+        int count = 0;
+        int newIdx = 0;
+        String curr = "";
+
+        for(int i = 0; i < array.length; i++) {
+            if(!array[i].equals(curr)) {
+                curr = array[i];
+            } else count++;
+        }
+
+        result = new String[array.length - count];
+
+        for (int i = 0; i < array.length; i++) {
+            if (!array[i].equals(curr)) {
+                result[newIdx] = array[i];
+                curr = array[i];
+                newIdx++;
+            }
+        }
+
+        return result;
     }
 
     /**
      * @param array array of chars
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
-     */ // TODO
+     */
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+        String[] result;
+        int count = 0;
+        int newIdx = 0;
+        String tmp = "";
+        String curr = "";
+
+        for(int i = 0; i < array.length; i++) {
+            if(!array[i].equals(curr)) {
+                curr = array[i];
+            } else count++;
+        }
+
+        result = new String[array.length - count];
+        String testValue = array[0];
+        for (int i = 0; i < array.length; i++) {
+            if (!array[i].equals(testValue)) {
+                result[newIdx] = tmp;
+                tmp = array[i];
+                testValue = array[i];
+                newIdx++;
+            } else if (array[i].equals(testValue)) {
+                tmp += array[i];
+            } else
+                result[newIdx] = array [i];
+        }
+        result[newIdx] = tmp;
+
+
+        return result;
     }
+
 
 
 }
